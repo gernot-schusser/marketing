@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>meinphysio+ · Growth-Konzept &amp; SEO-Briefing · v0.4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* ===== mp+ BRAND-TOKEN =====
+       Markenfarbe hier zentral tauschen, sobald der offizielle
+       Hexwert aus dem Styleguide vorliegt: nur --brand ändern. */
+    --brand:#00a878;
+    --brand-soft:#e2f6ef;
+
+    --ink:#0c0f12;
+    --ink-soft:#4a5560;
+    --paper:#ffffff;
+    --paper-dim:#f5f7f8;
+    --line:#dde3e7;
+    --accent:var(--brand);
+    --accent-soft:var(--brand-soft);
+    --warn:#b4540a;
+    --warn-soft:#faeede;
+    --mono:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    font-size:16px;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+
+  /* ---- Kopf ---- */
+  header{border-bottom:3px solid var(--ink);padding:48px 0 32px}
+  .doc-meta{display:flex;flex-wrap:wrap;gap:8px 24px;font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);margin-bottom:20px}
+  .doc-meta b{color:var(--ink);font-weight:500}
+  h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4.5vw,42px);line-height:1.12;letter-spacing:-0.01em}
+  h1 .plus{color:var(--accent)}
+  .purpose{margin-top:16px;max-width:640px;color:var(--ink-soft)}
+
+  /* ---- Navigationsleiste (Phasen des Dokuments) ---- */
+  nav{position:sticky;top:0;background:var(--paper);border-bottom:1px solid var(--line);z-index:10}
+  nav .wrap{display:flex;gap:2px;overflow-x:auto;padding-top:0;padding-bottom:0}
+  nav a{
+    font-family:var(--mono);font-size:12px;white-space:nowrap;
+    padding:12px 14px;text-decoration:none;color:var(--ink-soft);
+    border-bottom:3px solid transparent;
+  }
+  nav a:hover,nav a:focus-visible{color:var(--accent);border-bottom-color:var(--accent);outline:none}
+
+  /* ---- Abschnitte im Stil eines Behandlungsplans ---- */
+  section{padding:56px 0 8px}
+  .phase{
+    display:flex;align-items:baseline;gap:14px;margin-bottom:8px;
+  }
+  .phase .tag{
+    font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+    background:var(--ink);color:#fff;padding:3px 10px;border-radius:3px;flex-shrink:0;
+  }
+  .phase .tag.accent{background:var(--accent)}
+  h2{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(21px,3vw,27px);letter-spacing:-0.005em}
+  section > .phase h2::after{content:"*.";color:var(--brand);margin-left:2px}
+  .brand-logo{height:26px;display:block;margin-bottom:22px}
+  footer .brand-logo{height:22px;margin:0 0 14px}
+  .lede{color:var(--ink-soft);max-width:640px;margin:8px 0 28px}
+  h3{font-family:'Archivo',sans-serif;font-weight:600;font-size:17px;margin:28px 0 10px}
+  p{margin-bottom:14px;max-width:70ch}
+  ul,ol{margin:0 0 16px 22px}
+  li{margin-bottom:7px;max-width:66ch}
+  strong{font-weight:600}
+
+  /* ---- Karten & Tabellen ---- */
+  .grid{display:grid;gap:14px;margin:20px 0}
+  .grid.c2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .card{border:1px solid var(--line);border-radius:8px;padding:18px 20px;background:var(--paper)}
+  .card.tint{background:var(--paper-dim)}
+  .card h4{font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;margin-bottom:8px}
+  .card .k{font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.06em;display:block;margin-bottom:6px}
+  .card p,.card li{font-size:14.5px}
+  .card ul{margin-left:18px;margin-bottom:0}
+
+  table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+  th{
+    text-align:left;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+    color:var(--ink-soft);font-weight:500;padding:8px 12px 8px 0;
+    border-bottom:2px solid var(--ink);text-transform:uppercase;
+  }
+  td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{font-weight:600}
+  .score{font-family:var(--mono);font-weight:500;color:var(--accent)}
+  .table-scroll{overflow-x:auto}
+  .table-scroll table{min-width:640px}
+
+  /* ---- Callouts ---- */
+  .note{
+    border-left:4px solid var(--accent);background:var(--accent-soft);
+    padding:14px 18px;border-radius:0 8px 8px 0;margin:20px 0;font-size:14.5px;max-width:none;
+  }
+  .note.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+  .note b{font-weight:600}
+  a.ext{
+    color:var(--accent);font-weight:600;text-decoration:none;
+    border-bottom:1.5px solid var(--accent);
+  }
+  a.ext:hover,a.ext:focus-visible{background:var(--accent-soft);outline:none}
+  .ext-hint{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+
+  /* ---- Workflow-Diagramm ---- */
+  .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin:24px 0}
+  .flow .step{
+    flex:1;min-width:200px;border:1.5px solid var(--ink);border-radius:8px;padding:16px;
+  }
+  .flow .step .where{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent);display:block;margin-bottom:6px;text-transform:uppercase}
+  .flow .step h4{font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;margin-bottom:6px}
+  .flow .step p{font-size:13.5px;color:var(--ink-soft);margin:0}
+  .flow .arrow{display:flex;align-items:center;font-family:var(--mono);color:var(--ink-soft);padding:0 2px}
+  @media(max-width:720px){.flow{flex-direction:column}.flow .arrow{transform:rotate(90deg);justify-content:center}}
+
+  /* ---- Briefing-Block (heraushebbar) ---- */
+  .briefing{
+    border:2px solid var(--accent);border-radius:10px;padding:28px;margin:28px 0;
+    background:var(--paper);
+  }
+  .briefing .head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+  .briefing .head h3{margin:0}
+  .briefing .head span{font-family:var(--mono);font-size:12px;color:var(--accent)}
+  .briefing dl{margin:0}
+  .briefing dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-soft);text-transform:uppercase;margin-top:16px}
+  .briefing dd{margin:4px 0 0 0;font-size:14.5px}
+  .briefing dd ul{margin-top:6px}
+
+  /* ---- Checkliste ---- */
+  .check li{list-style:none;position:relative;padding-left:26px;margin-left:-22px}
+  .check li::before{
+    content:"";position:absolute;left:0;top:5px;width:14px;height:14px;
+    border:1.5px solid var(--ink-soft);border-radius:3px;
+  }
+
+  /* ---- Fuß ---- */
+  footer{background:var(--ink);color:#c9d1d6;margin-top:64px;padding:32px 0 48px;font-family:var(--mono);font-size:12px}
+  .open-q{background:var(--paper-dim);border-radius:8px;padding:18px 20px;margin:16px 0}
+  .open-q li{font-size:14.5px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img class="brand-logo" src="https://cdn.prod.website-files.com/67615cd2f575517262de4cdf/67615cd2f575517262de4d53_logo-dark.svg" alt="meinphysio+" onerror="this.style.display='none'">
+    <div class="doc-meta">
+      <span>DOK <b>Growth-Konzept &amp; SEO-Briefing</b></span>
+      <span>VERSION <b>0.4 · Entwurf</b></span>
+      <span>STAND <b>Juli 2026</b></span>
+      <span>OWNER <b>[Name eintragen]</b></span>
+      <span>STATUS <b>In Abstimmung</b></span>
+    </div>
+    <h1>meinphysio<span class="plus">+</span> als Know-How-Carrier:<br>Organisches Wachstum für Marke &amp; Franchise<span class="plus">*.</span></h1>
+    <p class="purpose">Lebendes Arbeitsdokument. Zweck: gemeinsames Verständnis von Strategie, Datenbedarf und Umsetzungsplan — und Briefing-Grundlage für externe SEO-/Content-Partner. Änderungen bitte kommentieren, nicht überschreiben.</p>
+  </div>
+</header>
+
+<nav aria-label="Dokumentabschnitte">
+  <div class="wrap">
+    <a href="#anamnese">1 · Anamnese</a>
+    <a href="#ziel">2 · Zielbild</a>
+    <a href="#daten">3 · Datenbedarf</a>
+    <a href="#hebel">4 · Growth-Hebel</a>
+    <a href="#wettbewerb">5 · Wettbewerb</a>
+    <a href="#briefing">6 · SEO-Briefing</a>
+    <a href="#plan">7 · 90-Tage-Plan</a>
+    <a href="#workflow">8 · Arbeitsmodell</a>
+    <a href="#offen">9 · Offen</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ============ 1 ANAMNESE ============ -->
+  <section id="anamnese">
+    <div class="phase"><span class="tag">PHASE 1</span><h2>Anamnese: Wo wir stehen</h2></div>
+    <p class="lede">Die aktuelle Website ist eine gute lokale Conversion-Seite — aber noch kein Wissens-Asset. Das ist der Befund, aus dem alles Weitere folgt.</p>
+
+    <div class="grid c2">
+      <div class="card tint">
+        <span class="k">STÄRKEN</span>
+        <ul>
+          <li>Klare Standort- und Leistungsstruktur, 3 Praxen in Berlin</li>
+          <li>Buchungs-CTA konsequent präsent</li>
+          <li>FAQ-Inhalte mit echtem Patientennutzen bereits vorhanden</li>
+          <li>Zweisprachig (DE/EN), moderne technische Basis (Webflow)</li>
+        </ul>
+      </div>
+      <div class="card tint">
+        <span class="k">LÜCKEN</span>
+        <ul>
+          <li>Kein Wissensbereich: keine Symptom-, OP-Nachsorge- oder Ratgeber-Inhalte</li>
+          <li>Keine sichtbaren Autoren/Experten (E-E-A-T fehlt für Medizin-Rankings)</li>
+          <li>B2B/Franchise nur als Footer-Link „Partner werden"</li>
+          <li>FAQ ohne strukturierte Daten, kein Schema-Markup erkennbar</li>
+          <li>Rankings vermutlich begrenzt auf „Physiotherapie + Stadtteil"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note"><b>Kernthese:</b> Patienten suchen Wochen vor der Terminbuchung nach Beschwerden und OP-Nachsorge („Übungen nach Knie-TEP", „wie lange krank nach Bandscheiben-OP") — nicht nach „Physiotherapie Berlin". Wer diese Fragen am besten beantwortet, gewinnt den Patienten früher, wird von Google <em>und</em> von KI-Assistenten zitiert und baut eine Marke auf, die deutschlandweit trägt.</div>
+  </section>
+
+  <!-- ============ 2 ZIELBILD ============ -->
+  <section id="ziel">
+    <div class="phase"><span class="tag">PHASE 2</span><h2>Zielbild &amp; Messgrößen</h2></div>
+    <p class="lede">Zwei getrennte Funnel, ein gemeinsames Marken-Dach. Jedes Ziel bekommt eine Kennzahl — Bauchgefühl ist kein KPI.</p>
+
+    <div class="grid c2">
+      <div class="card">
+        <span class="k">FUNNEL A · PATIENTEN (B2C)</span>
+        <h4>Know-How-Carrier für Patienten</h4>
+        <p>Wissens-Hub mit OP-Nachsorge- und Beschwerde-Seiten nach Template. Ziel: organische Sichtbarkeit weit vor der Buchungsentscheidung, Überleitung in Termine.</p>
+        <ul>
+          <li><strong>KPI:</strong> organische Sitzungen /wissen/, Rankings Top-10, Termine mit Quelle „organisch"</li>
+          <li><strong>Leading Indicator:</strong> indexierte Seiten, Impressionen in der Search Console</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">FUNNEL B · PRAXEN (B2B/FRANCHISE)</span>
+        <h4>Know-How-Partner für Praxisinhaber</h4>
+        <p>Eigener Bereich (z.&nbsp;B. /partner/) mit Inhalten zu Nachfolge, Recruiting, Abrechnung, Digitalisierung. Geringes Volumen, hoher Wert pro Lead.</p>
+        <ul>
+          <li><strong>KPI:</strong> qualifizierte Franchise-Anfragen pro Quartal</li>
+          <li><strong>Leading Indicator:</strong> LinkedIn-Reichweite, Downloads/Erstgespräche</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">FUNNEL C · THERAPEUTEN (RECRUITING)</span>
+        <h4>Wunsch-Arbeitgeber für Therapeuten</h4>
+        <p>Der Engpass der Branche ist Personal (Ø 221 Tage Nachbesetzung, Teilzeitquote &gt;50&nbsp;%). Jeder Wissens-Content ist zugleich Employer Branding; Karrierebereich und Therapeuten-Formate zahlen direkt auf Behandlungskapazität ein — und sind ein Franchise-Verkaufsargument.</p>
+        <ul>
+          <li><strong>KPI:</strong> qualifizierte Bewerbungen pro Quartal, Time-to-Hire</li>
+          <li><strong>Leading Indicator:</strong> Besuche /karriere/, Follower aus der Fachcommunity</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note warn"><b>Kapazitäts-Regel:</b> Nachfrage-Wachstum (Funnel A) wird nur so weit skaliert, wie Terminverfügbarkeit besteht. Volle Wartelisten erzeugen schlechte Bewertungen und entwerten Local SEO. Deshalb läuft Funnel C nicht „später", sondern parallel.</div>
+
+    <h3>Die Quantifizierungs-Formel für jeden Hebel</h3>
+    <p style="font-family:var(--mono);font-size:14px;background:var(--paper-dim);padding:14px 18px;border-radius:8px;max-width:none">
+      Erwarteter Wert = Suchvolumen × CTR (Positionsannahme) × Conversion-Rate × Wert pro Neupatient
+    </p>
+    <p>Beispielrechnung (Platzhalter, mit echten Daten ersetzen): 1.000 Suchen/Monat × 15&nbsp;% CTR (Ø Position 4) × 2&nbsp;% Termin-Conversion × 250&nbsp;€ Rezeptwert ≈ <strong>750&nbsp;€/Monat pro Seite</strong> — vor Folgeterminen und Markeneffekt. So wird jede Content-Entscheidung vergleichbar.</p>
+  </section>
+
+  <!-- ============ 3 DATENBEDARF ============ -->
+  <section id="daten">
+    <div class="phase"><span class="tag">PHASE 3</span><h2>Datenbedarf: Was wir sammeln, bevor wir bauen</h2></div>
+    <p class="lede">Checkliste der Quellen, wer sie liefert und welche Entscheidung sie ermöglicht. Ziel: alles in einem gemeinsamen Ordner (Claude-Projekt + Drive).</p>
+
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Quelle</th><th>Was exportieren</th><th>Beantwortet</th><th>Wer / bis wann</th></tr></thead>
+      <tbody>
+        <tr><td>Google Ads</td><td>Suchbegriffe-Bericht 12 Monate inkl. Conversions &amp; CPC</td><td>Welche Keywords erzeugen nachweislich Termine? → Content-Priorisierung Nr.&nbsp;1</td><td>[ ]</td></tr>
+        <tr><td>Search Console</td><td>Alle Suchanfragen 16 Monate (Impressionen, Klicks, Position)</td><td>Wofür ranken wir schon auf Pos. 8–20? → schnelle Gewinne</td><td>[ ]</td></tr>
+        <tr><td>GA4</td><td>Sitzungen &amp; Conversions je Seitentyp, Kanalvergleich</td><td>Conversion-Rate je Seitentyp → Grundlage der Wert-Formel</td><td>[ ]</td></tr>
+        <tr><td>Buchungssystem</td><td>Neupatienten/Monat je Standort, Ø Rezeptwert, Quelle falls erfasst</td><td>Wert pro Neupatient → macht Traffic in Euro übersetzbar</td><td>[ ]</td></tr>
+        <tr><td>Google Business Profile</td><td>Insights aller 3 Standorte (Anrufe, Routen, Suchbegriffe)</td><td>Lokale Nachfrage-Basis, Review-Strategie</td><td>[ ]</td></tr>
+        <tr><td>Keyword-Tool (Sistrix/Ahrefs/SEMrush)</td><td>Sichtbarkeitsindex Domain + 3–5 Wettbewerber; Keyword-Sets „nach OP", „Übungen bei", „Physiotherapie + Stadt"</td><td>Marktgröße je Themencluster, Wettbewerbslücken</td><td>[ ]</td></tr>
+        <tr><td>Wettbewerber-Liste</td><td>5 Content-Wettbewerber (z.&nbsp;B. Klinik-Ratgeber, Physio-Ketten, Gesundheitsportale)</td><td>Benchmark: Was rankt heute, was fehlt dort?</td><td>[ ]</td></tr>
+        <tr><td>KI-Sichtbarkeits-Baseline</td><td>20 Zielfragen manuell in ChatGPT/Perplexity/Claude/Gemini stellen, Erwähnungen dokumentieren</td><td>Nullmessung für GEO (Generative Engine Optimization)</td><td>[ ]</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="note warn"><b>Ohne die ersten vier Quellen keine Priorisierung.</b> Ads-Suchbegriffe + Search Console + Conversion-Rate + Patientenwert sind das Minimum, um Growth-Hebel seriös zu quantifizieren statt zu raten.</div>
+  </section>
+
+  <!-- ============ 4 GROWTH-HEBEL ============ -->
+  <section id="hebel">
+    <div class="phase"><span class="tag">PHASE 4</span><h2>Growth-Hebel, priorisiert (ICE-Score)</h2></div>
+    <p class="lede">Impact × Confidence × Ease, je 1–10. Scores sind Erstschätzungen und werden nach Datenlage (Phase 3) neu bewertet.</p>
+
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>#</th><th>Hebel</th><th>Kurzbeschreibung</th><th>I</th><th>C</th><th>E</th><th>ICE</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>OP-Nachsorge-Templates</td><td>Skalierbares Seitenmodell „Physiotherapie nach [OP]" mit Reha-Phasen, Übungen, Rezept-Erklärung, FAQ. Start: 10 volumenstärkste OPs.<br><a class="ext" href="https://claude.ai/design/p/1d0022c0-2bc0-4265-a501-36684f822587?file=Reha-Guide+-+H%C3%BCftimpingement+%28FAI%29+v2.dc.html" target="_blank" rel="noopener">→ Design-Beispiel: Reha-Guide Hüftimpingement (FAI) v2</a> <span class="ext-hint">(Claude Design · Projektzugang erforderlich)</span></td><td>9</td><td>8</td><td>6</td><td class="score">432</td></tr>
+        <tr><td>2</td><td>FAQ- &amp; Schema-Markup</td><td>Bestehende FAQs als FAQPage auszeichnen; MedicalBusiness/LocalBusiness je Standort; Person-Schema für Autoren. Einmaliger Aufwand.</td><td>6</td><td>9</td><td>9</td><td class="score">486</td></tr>
+        <tr><td>3</td><td>E-E-A-T-Ausbau</td><td>Therapeuten-Profile mit Qualifikationen, „medizinisch geprüft von"-Bausteine, Quellen &amp; Aktualisierungsdatum auf jeder Wissensseite.</td><td>8</td><td>8</td><td>7</td><td class="score">448</td></tr>
+        <tr><td>4</td><td>Search-Console-Quick-Wins</td><td>Bestehende Seiten mit Rankings Pos. 8–20 gezielt nachschärfen (Title, Intro, interne Links). Wirkung in Wochen statt Monaten.</td><td>7</td><td>8</td><td>8</td><td class="score">448</td></tr>
+        <tr><td>5</td><td>GEO / KI-Sichtbarkeit</td><td>Antwort-erste Textstruktur, Tabellen, extrahierbare Definitionen, llms.txt; monatliche Zitier-Messung über die 20 Zielfragen.</td><td>7</td><td>6</td><td>8</td><td class="score">336</td></tr>
+        <tr><td>6</td><td>Übungsvideos als Asset</td><td>Kurze Übungsvideos je OP-Seite → YouTube (zweitgrößte Suchmaschine) + Einbettung; Differenzierung ggü. Text-Portalen.</td><td>8</td><td>6</td><td>5</td><td class="score">240</td></tr>
+        <tr><td>7</td><td>Local-SEO-System</td><td>Google-Business-Profile standardisieren, Review-Funnel nach Behandlungsende (QR/SMS), Standortseiten-Template für Franchise-Rollout.</td><td>7</td><td>8</td><td>7</td><td class="score">392</td></tr>
+        <tr><td>8</td><td>B2B-Content + LinkedIn</td><td>/partner/-Bereich mit 5–8 Inhalten (Nachfolge, Recruiting, Abrechnung) + Gründer-Content auf LinkedIn zum Franchise-Aufbau.</td><td>8</td><td>6</td><td>6</td><td class="score">288</td></tr>
+        <tr><td>9</td><td>Digitale PR / Verlinkung</td><td>Datengetriebene Mini-Studien (z.&nbsp;B. „Wartezeiten Physiotherapie in deutschen Großstädten") als Linkmagnet für Gesundheitsmedien.</td><td>7</td><td>5</td><td>4</td><td class="score">140</td></tr>
+        <tr><td>10</td><td>Zuweiser-Engine</td><td>Systematische Befundberichte an überweisende Orthopäden, Chirurgen, Zahnärzte (CMD) nach jeder Behandlungsserie. Selbstverstärkender Offline-Kanal, den kaum eine Praxis professionell betreibt.</td><td>9</td><td>8</td><td>7</td><td class="score">504</td></tr>
+        <tr><td>11</td><td>Lead-Magnet + Owned Audience</td><td>Übungsprogramme als PDF/Videoserie gegen E-Mail/WhatsApp-Kontakt; Recall bei Rezeptende. Macht Wissens-Traffic algorithmus-unabhängig (Vorbild: 60.000+ WhatsApp-Abonnenten bei L&amp;B).</td><td>8</td><td>7</td><td>7</td><td class="score">392</td></tr>
+        <tr><td>12</td><td>§20-Präventionskurse als Funnel-Einstieg</td><td>Zertifizierte Kurse sind für Versicherte erstattungsfähig — Einstiegsprodukt mit eingebautem Kaufargument; bereits im Portfolio, aber nicht als Akquise-Kanal vermarktet.</td><td>7</td><td>8</td><td>8</td><td class="score">448</td></tr>
+        <tr><td>13</td><td>Firmenkunden / BGM (B2B2C)</td><td>Ergonomie-Workshops &amp; Rücken-Screenings bei Arbeitgebern: planbare Selbstzahler-Umsätze, Patientenzustrom, später Franchise-Argument.</td><td>7</td><td>6</td><td>6</td><td class="score">252</td></tr>
+        <tr><td>14</td><td>Recruiting-Content /karriere/</td><td>Karrierebereich mit Team-Einblicken, Fortbildungsversprechen, Gehaltsklarheit; Fach-Content signalisiert Arbeitsniveau. Direkter Hebel auf Behandlungskapazität.</td><td>8</td><td>7</td><td>7</td><td class="score">392</td></tr>
+        <tr><td>15</td><td>Ausfall- &amp; Recall-Automatik</td><td>Terminerinnerungen, Wartelisten-Nachrücken, Rezeptende-Recall. Umsatzwirksam bei null Akquisekosten; Voraussetzung, damit Traffic-Wachstum nicht verpufft.</td><td>7</td><td>9</td><td>8</td><td class="score">504</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p><strong>Lesart:</strong> Hebel 2, 3, 4 sind die schnellen fundamentalen Arbeiten (Wochen 1–4). Hebel 1 ist das strategische Kernprojekt (ab Woche 3). Die Betriebs-Hebel 10, 12 und 15 haben Top-Scores, weil sie ohne Content-Vorlauf wirken — sie gehören in die ersten 30 Tage. Hebel 5–8, 11, 13, 14 laufen parallel an, sobald das Fundament steht. Hebel 9 ist Kür für Quartal 2.</p>
+
+    <div class="note warn"><b>Rechtliche Leitplanke (HWG):</b> Als Heilmittelerbringer gilt das Heilmittelwerbegesetz. Keine Heilungsversprechen, Vorsicht bei Vorher-nachher-Darstellungen und Patienten-Prämien (klassisches „Freunde werben" ist heikel). Jedes Content-Template und jeder Hebel bekommt einen kurzen HWG-Check; die Anforderung steht auch im SEO-Briefing.</div>
+  </section>
+
+  <!-- ============ 5 WETTBEWERB ============ -->
+  <section id="wettbewerb">
+    <div class="phase"><span class="tag">PHASE 5</span><h2>Wettbewerbsbild: Wer es gut macht — und wo die Lücke ist</h2></div>
+    <p class="lede">Im Wissens-Segment konkurrieren wir nicht mit 50.000 Praxen, sondern mit einer Handvoll Content-Playern. Keiner davon ist eine kassenzugelassene Praxisgruppe mit Franchise-Ambition.</p>
+
+    <div class="grid c2">
+      <div class="card">
+        <span class="k">BENCHMARK · CONTENT-MARKE</span>
+        <h4>Liebscher &amp; Bracht</h4>
+        <p>Gold-Standard für Content → Marke → Netzwerk: ~1,5 Mio. YouTube-Abonnenten, Einzelvideos mit 10+ Mio. Views, ~1 Mio. Website-Nutzer/Monat, 60.000+ WhatsApp-Abonnenten, über 15.000 in der Methode Ausgebildete. Aufgebaut mit täglicher Video-Frequenz über 12–18 Monate.</p>
+        <p><strong>Schwäche = unsere Chance:</strong> Methode wissenschaftlich umstritten, Guru-Positionierung. Die Rolle der evidenzbasierten, seriösen Praxis-Marke ist unbesetzt.</p>
+      </div>
+      <div class="card">
+        <span class="k">BENCHMARK · SEO-FUNNEL</span>
+        <h4>Dr.-Gumpert-Modell / Lumedis &amp; Gelenk-Klinik</h4>
+        <p>Ratgeber-Domains mit enormer organischer Reichweite, die eine Praxis speisen: dr-gumpert.de → Privatpraxis Lumedis (Frankfurt); gelenk-klinik.de mit Arzt-Autoren und Beschwerde-Lexikon. Beide zeigen die E-E-A-T-Mechanik im Detail: sichtbare Autoren, Veröffentlichungs- und Aktualisierungsdatum, Facharzt-Profile.</p>
+        <p><strong>Lernpunkt:</strong> Ärztlich dominierte Ratgeber lassen die physiotherapeutische Perspektive (Übungen, Reha-Alltag, Rezept-Praxis) oft flach — genau unser Terrain.</p>
+      </div>
+      <div class="card">
+        <span class="k">BENCHMARK · FACH-AUTORITÄT B2B</span>
+        <h4>Physio Meets Science</h4>
+        <p>Autorität in der Therapeuten-Community durch evidenzbasierte Aufbereitung von Studien. Relevant als Vorbild für Funnel B/C: Wer Therapeuten fachlich erreicht, gewinnt Bewerber und Franchise-Interessenten.</p>
+      </div>
+      <div class="card">
+        <span class="k">DER REST DES MARKTS</span>
+        <h4>Fragmentiert und unsichtbar</h4>
+        <p>~50.900 zugelassene Praxen, ~70&nbsp;% Einzelunternehmen, nur 7&nbsp;% mit mehr als zehn Angestellten; Werbeausgaben rückläufig, Digitalisierung zögerlich. Auch Praxisgruppen/Konsolidierer betreiben Content meist ohne SEO-Systematik (Feigenblatt-Magazine).</p>
+        <p><strong>Konsequenz:</strong> Das Fenster für die Position „evidenzbasierter Physio-Know-How-Carrier mit echtem Praxisnetz" ist offen — aber Vorlaufzeiten von 12–18 Monaten gelten auch für uns. Wer zuerst konsequent produziert, besetzt sie.</p>
+      </div>
+    </div>
+
+    <div class="note"><b>Positionierungssatz (Arbeitsstand):</b> meinphysio+ ist die evidenzbasierte, kassenzugelassene Antwort auf die Content-Gurus — echtes Praxisnetz, echte Therapeuten als Autoren, Übungen und Reha-Wissen ohne Heilsversprechen. Angrenzende Player (Blackroll als Produkt-Content, DiGA-Apps wie Kaia/Vivira als digitale Therapie) beobachten, nicht kopieren.</div>
+  </section>
+
+  <!-- ============ 6 SEO-BRIEFING ============ -->
+  <section id="briefing">
+    <div class="phase"><span class="tag accent">BRIEFING</span><h2>Kurzbriefing für SEO-/Content-Partner</h2></div>
+    <p class="lede">Dieser Abschnitt ist so geschrieben, dass er eigenständig an Agenturen oder Freelancer gehen kann — als Grundlage für Angebot und Kick-off.</p>
+
+    <div class="briefing">
+      <div class="head">
+        <h3>SEO-Briefing meinphysio+ · v0.1</h3>
+        <span>Weitergabe an Partner freigegeben nach Review</span>
+      </div>
+      <dl>
+        <dt>Unternehmen</dt>
+        <dd>meinphysio+ GmbH — Physiotherapie-Praxisgruppe, aktuell 3 Standorte in Berlin (Charlottenburg, Mitte, Prenzlauer Berg), alle Kassen. Aufbau eines deutschlandweiten Franchise-Systems in Vorbereitung. Website: meinphysioplus.de (Webflow, DE/EN).</dd>
+
+        <dt>Strategisches Ziel</dt>
+        <dd>Positionierung als führender Know-How-Carrier für Physiotherapie in Deutschland — gegenüber Patienten (B2C) und Praxisinhabern (B2B/Franchise). Organischer Traffic soll von lokaler Suche auf themenbasierte Suche (Beschwerden, OP-Nachsorge) ausgeweitet werden und die Marke unabhängig vom Standort Berlin tragen.</dd>
+
+        <dt>Scope der Zusammenarbeit</dt>
+        <dd>
+          <ul>
+            <li><strong>Technisches SEO-Audit</strong> der Bestandsseite inkl. Schema-Markup-Konzept (MedicalBusiness, LocalBusiness, FAQPage, MedicalWebPage, Person)</li>
+            <li><strong>Keyword- &amp; Cluster-Analyse</strong> für zwei Themenwelten: (a) OP-Nachsorge &amp; Beschwerden B2C, (b) Praxisführung/Nachfolge B2B — auf Basis unserer Ads- und Search-Console-Daten (werden bereitgestellt)</li>
+            <li><strong>Content-Template-Spezifikation</strong> für skalierbare OP-/Beschwerde-Seiten (Struktur, Wortumfang, Medien, interne Verlinkung, E-E-A-T-Bausteine)</li>
+            <li><strong>Redaktionsplan</strong> für die ersten 15 Wissensseiten mit Volumen-/Wettbewerbsbewertung</li>
+            <li><strong>GEO-Empfehlungen:</strong> Struktur für KI-Zitierbarkeit, Mess-Setup für Erwähnungen in KI-Assistenten</li>
+          </ul>
+        </dd>
+
+        <dt>Nicht im Scope</dt>
+        <dd>Paid-Kampagnen-Management (läuft intern), Webdesign (läuft über internes Design-Tooling), Social-Media-Betrieb.</dd>
+
+        <dt>Besondere Anforderungen</dt>
+        <dd>
+          <ul>
+            <li>Medizin-Content = YMYL: Jede Empfehlung muss E-E-A-T-konform umsetzbar sein (echte Therapeuten als geprüfte Autoren, Quellen, Aktualisierungslogik)</li>
+            <li>Heilmittelwerbegesetz (HWG): Alle Content-Empfehlungen und CTA-Konzepte müssen HWG-konform sein — keine Heilungsversprechen, Vorsicht bei Erfolgsdarstellungen und Incentives</li>
+            <li>Skalierbarkeit: Alle Templates müssen für Franchise-Rollout auf weitere Städte funktionieren (Standortseiten-Logik, keine Duplicate-Content-Fallen)</li>
+            <li>Erfahrung mit Healthcare/Heilmittel-Bereich bitte mit Referenzen belegen</li>
+          </ul>
+        </dd>
+
+        <dt>Bereitgestellte Daten</dt>
+        <dd>Google-Ads-Suchbegriffe (12 Monate, mit Conversions), Search-Console-Export (16 Monate), GA4-Zugang lesend, Standort-/Leistungsübersicht, Wettbewerberliste. [Status: in Zusammenstellung]</dd>
+
+        <dt>Erwartete Deliverables &amp; Zeitrahmen</dt>
+        <dd>Audit + Keyword-Cluster + Template-Spec innerhalb von 4 Wochen nach Kick-off; Redaktionsplan Woche 5. Danach optional laufende Betreuung (separat anzubieten).</dd>
+
+        <dt>KPIs der Zusammenarbeit</dt>
+        <dd>Indexierte Wissensseiten, Rankings Top-10 im Zielcluster, organische Sitzungen /wissen/, organisch attribuierte Terminbuchungen, dokumentierte KI-Erwähnungen (Baseline vs. Quartal).</dd>
+
+        <dt>Ansprechpartner &amp; Prozess</dt>
+        <dd>[Name, Rolle, E-Mail]. Angebot bitte mit Aufwandsschätzung je Deliverable. Rückfragen gern vorab per Call.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ 6 PLAN ============ -->
+  <section id="plan">
+    <div class="phase"><span class="tag">PHASE 6</span><h2>Implementierungsplan · erste 90 Tage</h2></div>
+    <p class="lede">Schlank gehalten: drei Blöcke, klare Abhängigkeiten, ein Review-Punkt pro Block.</p>
+
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Zeitraum</th><th>Arbeitspaket</th><th>Ergebnis / Definition of Done</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td>Wo 1–2</td><td>Datensammlung (Phase-3-Checkliste) + SEO-Partner-Auswahl mit Briefing</td><td>Alle 8 Datenquellen im Projektordner; 2–3 Angebote liegen vor</td><td>[ ]</td></tr>
+        <tr><td>Wo 2–4</td><td>Fundament: Schema-Markup, Autoren-Profile, Search-Console-Quick-Wins</td><td>FAQ/LocalBusiness-Markup live; 5 Bestandsseiten optimiert; Therapeuten-Profile online</td><td>[ ]</td></tr>
+        <tr><td>Wo 2–4</td><td>Betriebs-Hebel: Zuweiser-Engine, Review-Trigger, Recall-Automatik (Hebel 10, 7, 15)</td><td>Befundbericht-Vorlage im Einsatz; Review-Prozess je Standort live; Recall bei Rezeptende aktiv</td><td>[ ]</td></tr>
+        <tr><td>Wo 3–4</td><td>Template-Spec OP-Seiten: Prototyp „Reha-Guide Hüftimpingement (FAI) v2" gegen Spec reviewen und finalisieren</td><td>Leuchtturm-Seite reviewt, freigegeben und als verbindliches Template dokumentiert</td><td>[ ]</td></tr>
+        <tr><td>Wo 5–8</td><td>Produktion Wissensseiten Welle 1</td><td>10 OP-/Beschwerde-Seiten live, intern verlinkt, mit geprüften Autoren</td><td>[ ]</td></tr>
+        <tr><td>Wo 6–8</td><td>B2B-Start: /partner/-Struktur + 3 Kerninhalte + LinkedIn-Kadenz</td><td>Bereich live; 1 Post/Woche etabliert</td><td>[ ]</td></tr>
+        <tr><td>Wo 9–12</td><td>Messung &amp; Skalierung: SC-Review, KI-Zielfragen-Retest, ICE-Scores aktualisieren</td><td>Entscheidung Welle 2 (Themenliste), Report an Stakeholder</td><td>[ ]</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="note"><b>Erwartungsmanagement:</b> Medizinischer Content braucht typischerweise 4–9 Monate bis zu spürbarem organischen Traffic. Quick-Wins (Hebel 2–4) und Paid überbrücken; der Hub ist die Investition in die Franchise-Skalierung.</div>
+  </section>
+
+  <!-- ============ 7 WORKFLOW ============ -->
+  <section id="workflow">
+    <div class="phase"><span class="tag">PHASE 7</span><h2>Arbeitsmodell: Konzept ↔ Design ↔ Review</h2></div>
+    <p class="lede">So greifen Claude-Chat (Strategie) und Claude Design (visuelle Umsetzung) ineinander — mit diesem Dokument als Single Source of Truth.</p>
+
+    <div class="flow">
+      <div class="step">
+        <span class="where">Claude-Projekt / Chat</span>
+        <h4>1 · Konzipieren</h4>
+        <p>Strategie, Priorisierung, Seiten-Specs und Briefings entstehen hier — mit allen Daten im Projektkontext.</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <span class="where">Übergabe: Spec</span>
+        <h4>2 · Spezifizieren</h4>
+        <p>Pro Seite eine kompakte Spec: Zweck, Zielgruppe, Blöcke in Reihenfolge, Ton, CTA, SEO-Vorgaben (Title, H1, Schema).</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <span class="where">Claude Design</span>
+        <h4>3 · Gestalten</h4>
+        <p>Die Spec wird als Prompt eingegeben; das Design entsteht als HTML-Datei und wird exportiert.</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <span class="where">Zurück in den Chat</span>
+        <h4>4 · Reviewen</h4>
+        <p>Export hier hochladen: Review gegen Spec (Inhalt, SEO, E-E-A-T, Conversion). Feedback fließt zurück in Schritt 2 oder 3.</p>
+      </div>
+    </div>
+
+    <h3>Spielregeln</h3>
+    <ul>
+      <li><strong>Dieses Dokument</strong> ist die einzige Quelle für Strategie und Prioritäten. Jede Version bekommt eine Nummer (v0.1, v0.2 …) und ein Änderungsdatum.</li>
+      <li><strong>Design-Referenzen</strong> werden hier verlinkt, sobald sie in Claude Design entstehen. Aktueller Stand: <a class="ext" href="https://claude.ai/design/p/1d0022c0-2bc0-4265-a501-36684f822587?file=Reha-Guide+-+H%C3%BCftimpingement+%28FAI%29+v2.dc.html" target="_blank" rel="noopener">Reha-Guide Hüftimpingement (FAI) v2</a> als erster Prototyp des OP-/Beschwerde-Templates (Hebel 1) sowie „Homepage A · Vertrauen". <span class="ext-hint">Links erfordern Zugang zum Claude-Design-Projekt; für Externe HTML-Export beilegen.</span></li>
+      <li><strong>Claude Design</strong> bekommt nie einen vagen Auftrag, sondern immer eine Spec aus Schritt 2 — das hält Design-Iterationen kurz.</li>
+      <li><strong>Ablage:</strong> Claude-Projekt „meinphysio+ Growth" mit diesem Dokument, den Datenexporten und allen Design-HTML-Exporten. Parallel Spiegel in Drive für Nicht-Claude-Nutzer.</li>
+      <li><strong>Externe Partner</strong> erhalten Abschnitt 5 (Briefing) plus Lesezugriff auf die Daten — nicht das ganze Dokument, solange es Entwurfsstatus hat.</li>
+    </ul>
+  </section>
+
+  <!-- ============ 8 OFFEN ============ -->
+  <section id="offen">
+    <div class="phase"><span class="tag">PHASE 8</span><h2>Offene Fragen &amp; nächste Schritte</h2></div>
+    <div class="open-q">
+      <ul class="check">
+        <li>Paid-Keyword-Daten und Search-Console-Export bereitstellen → Grundlage für Priorisierung der ersten 15 Seiten</li>
+        <li>Design-Exporte aus Claude Design („Homepage A · Vertrauen" und „Reha-Guide Hüftimpingement v2") herunterladen und im Chat hochladen → konkretes Review gegen Spec, SEO und HWG</li>
+        <li>Wer sind die 2–3 Therapeuten, die als geprüfte Autoren sichtbar werden? (Foto, Qualifikationen, Freigabe)</li>
+        <li>Wert pro Neupatient beziffern (Ø Rezeptwert × Folgetermine) → macht die ICE-Scores belastbar</li>
+        <li>Terminverfügbarkeit je Standort prüfen → Kapazitäts-Regel: Wie viel Neupatienten-Wachstum verträgt jeder Standort?</li>
+        <li>Zuweiser-Liste erstellen: Welche Orthopäden/Chirurgen/Zahnärzte überweisen heute schon? → Startpunkt Zuweiser-Engine</li>
+        <li>HWG-Kurzcheck einholen (Anwalt oder Verband) für Template, Review-Trigger und Lead-Magnete</li>
+        <li>Entscheidung: /wissen/ und /partner/ auf Hauptdomain (empfohlen) oder Subdomain?</li>
+        <li>Budgetrahmen für externen SEO-Partner festlegen, Briefing v0.2 freigeben und versenden</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="brand-logo" src="https://cdn.prod.website-files.com/67615cd2f575517262de4cdf/67615cd2f575517262de4d54_logo-light.svg" alt="meinphysio+" onerror="this.style.display='none'">
+    meinphysio+ · Growth-Konzept &amp; SEO-Briefing · v0.4 · Entwurf · Juli 2026 · Nur für den internen Gebrauch &amp; ausgewählte Partner · Nächstes Review: [Datum]<br>
+    Änderungshistorie: v0.1 Erstfassung · v0.2 Wettbewerbsbild, Funnel C, Betriebs-Hebel, HWG · v0.3 Design-Referenz Reha-Guide · v0.4 mp+-Branding, noindex-Schutz
+  </div>
+</footer>
+
+</body>
+</html>
