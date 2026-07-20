@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>meinphysio+ · Growth-Konzept &amp; SEO-Briefing · v0.4</title>
+<title>meinphysio+ · Growth-Konzept &amp; SEO-Briefing · v0.5</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     /* ===== mp+ BRAND-TOKEN =====
@@ -24,13 +24,13 @@
     --accent-soft:var(--brand-soft);
     --warn:#b4540a;
     --warn-soft:#faeede;
-    --mono:'IBM Plex Mono',monospace;
+    --mono:'Manrope',sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{
-    font-family:'Inter',system-ui,sans-serif;
+    font-family:'Manrope',system-ui,sans-serif;
     color:var(--ink);
     background:var(--paper);
     line-height:1.6;
@@ -40,9 +40,9 @@
 
   /* ---- Kopf ---- */
   header{border-bottom:3px solid var(--ink);padding:48px 0 32px}
-  .doc-meta{display:flex;flex-wrap:wrap;gap:8px 24px;font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);margin-bottom:20px}
+  .doc-meta{display:flex;flex-wrap:wrap;gap:8px 24px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink-soft);margin-bottom:20px;text-transform:uppercase}
   .doc-meta b{color:var(--ink);font-weight:500}
-  h1{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4.5vw,42px);line-height:1.12;letter-spacing:-0.01em}
+  h1{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(28px,4.5vw,42px);line-height:1.12;letter-spacing:-0.01em}
   h1 .plus{color:var(--accent)}
   .purpose{margin-top:16px;max-width:640px;color:var(--ink-soft)}
 
@@ -62,16 +62,16 @@
     display:flex;align-items:baseline;gap:14px;margin-bottom:8px;
   }
   .phase .tag{
-    font-family:var(--mono);font-size:12px;letter-spacing:.08em;
-    background:var(--ink);color:#fff;padding:3px 10px;border-radius:3px;flex-shrink:0;
+    font-family:var(--mono);font-size:12px;letter-spacing:.16em;font-weight:800;
+    color:var(--brand);text-transform:uppercase;flex-shrink:0;
   }
-  .phase .tag.accent{background:var(--accent)}
-  h2{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(21px,3vw,27px);letter-spacing:-0.005em}
+  .phase .tag.accent{color:var(--ink)}
+  h2{font-family:'Manrope',sans-serif;font-weight:700;font-size:clamp(21px,3vw,27px);letter-spacing:-0.005em}
   section > .phase h2::after{content:"*.";color:var(--brand);margin-left:2px}
   .brand-logo{height:26px;display:block;margin-bottom:22px}
   footer .brand-logo{height:22px;margin:0 0 14px}
   .lede{color:var(--ink-soft);max-width:640px;margin:8px 0 28px}
-  h3{font-family:'Archivo',sans-serif;font-weight:600;font-size:17px;margin:28px 0 10px}
+  h3{font-family:'Manrope',sans-serif;font-weight:600;font-size:17px;margin:28px 0 10px}
   p{margin-bottom:14px;max-width:70ch}
   ul,ol{margin:0 0 16px 22px}
   li{margin-bottom:7px;max-width:66ch}
@@ -80,9 +80,9 @@
   /* ---- Karten & Tabellen ---- */
   .grid{display:grid;gap:14px;margin:20px 0}
   .grid.c2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-  .card{border:1px solid var(--line);border-radius:8px;padding:18px 20px;background:var(--paper)}
+  .card{border:1px solid var(--line);border-radius:16px;padding:20px 22px;background:var(--paper)}
   .card.tint{background:var(--paper-dim)}
-  .card h4{font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;margin-bottom:8px}
+  .card h4{font-family:'Manrope',sans-serif;font-weight:600;font-size:15px;margin-bottom:8px}
   .card .k{font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.06em;display:block;margin-bottom:6px}
   .card p,.card li{font-size:14.5px}
   .card ul{margin-left:18px;margin-bottom:0}
@@ -116,17 +116,17 @@
   /* ---- Workflow-Diagramm ---- */
   .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin:24px 0}
   .flow .step{
-    flex:1;min-width:200px;border:1.5px solid var(--ink);border-radius:8px;padding:16px;
+    flex:1;min-width:200px;border:1.5px solid var(--ink);border-radius:16px;padding:16px;
   }
   .flow .step .where{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent);display:block;margin-bottom:6px;text-transform:uppercase}
-  .flow .step h4{font-family:'Archivo',sans-serif;font-size:15px;font-weight:600;margin-bottom:6px}
+  .flow .step h4{font-family:'Manrope',sans-serif;font-size:15px;font-weight:600;margin-bottom:6px}
   .flow .step p{font-size:13.5px;color:var(--ink-soft);margin:0}
   .flow .arrow{display:flex;align-items:center;font-family:var(--mono);color:var(--ink-soft);padding:0 2px}
   @media(max-width:720px){.flow{flex-direction:column}.flow .arrow{transform:rotate(90deg);justify-content:center}}
 
   /* ---- Briefing-Block (heraushebbar) ---- */
   .briefing{
-    border:2px solid var(--accent);border-radius:10px;padding:28px;margin:28px 0;
+    border:2px solid var(--accent);border-radius:16px;padding:28px;margin:28px 0;
     background:var(--paper);
   }
   .briefing .head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
@@ -157,7 +157,7 @@
     <img class="brand-logo" src="https://cdn.prod.website-files.com/67615cd2f575517262de4cdf/67615cd2f575517262de4d53_logo-dark.svg" alt="meinphysio+" onerror="this.style.display='none'">
     <div class="doc-meta">
       <span>DOK <b>Growth-Konzept &amp; SEO-Briefing</b></span>
-      <span>VERSION <b>0.4 · Entwurf</b></span>
+      <span>VERSION <b>0.5 · Entwurf</b></span>
       <span>STAND <b>Juli 2026</b></span>
       <span>OWNER <b>[Name eintragen]</b></span>
       <span>STATUS <b>In Abstimmung</b></span>
@@ -491,10 +491,48 @@
 <footer>
   <div class="wrap">
     <img class="brand-logo" src="https://cdn.prod.website-files.com/67615cd2f575517262de4cdf/67615cd2f575517262de4d54_logo-light.svg" alt="meinphysio+" onerror="this.style.display='none'">
-    meinphysio+ · Growth-Konzept &amp; SEO-Briefing · v0.4 · Entwurf · Juli 2026 · Nur für den internen Gebrauch &amp; ausgewählte Partner · Nächstes Review: [Datum]<br>
-    Änderungshistorie: v0.1 Erstfassung · v0.2 Wettbewerbsbild, Funnel C, Betriebs-Hebel, HWG · v0.3 Design-Referenz Reha-Guide · v0.4 mp+-Branding, noindex-Schutz
+    <div style="display:flex;flex-wrap:wrap;gap:24px 48px;margin-bottom:22px;font-size:12.5px;line-height:1.7">
+      <div><strong style="color:#fff">Praxis Charlottenburg</strong><br>Einsteinufer 63, 10587 Berlin</div>
+      <div><strong style="color:#fff">Praxis Mitte</strong><br>Französische Str. 15, 10117 Berlin</div>
+      <div><strong style="color:#fff">Praxis Prenzlauer Berg</strong><br>Greifswalder Str. 207, 10405 Berlin</div>
+    </div>
+    Growth-Konzept &amp; SEO-Briefing · v0.5 · Entwurf · Juli 2026 · Nur für den internen Gebrauch &amp; ausgewählte Partner · Nächstes Review: [Datum]<br>
+    Änderungshistorie: v0.1 Erstfassung · v0.2 Wettbewerbsbild, Funnel C, Betriebs-Hebel, HWG · v0.3 Design-Referenz Reha-Guide · v0.4 mp+-Branding, noindex · v0.5 Look &amp; Feel meinphysioplus.de, Logo-Farbabgleich
   </div>
 </footer>
 
+<script>
+/* Liest die Akzentfarbe des "+" aus dem Original-Logo (mp+ CDN) und
+   setzt sie als --brand. Fallback: Platzhalterwert aus dem CSS bleibt. */
+(function(){
+  var img = new Image();
+  img.crossOrigin = "anonymous";
+  img.onload = function(){
+    try{
+      var cv = document.createElement("canvas");
+      cv.width = img.naturalWidth || 300; cv.height = img.naturalHeight || 60;
+      var ctx = cv.getContext("2d");
+      ctx.drawImage(img, 0, 0, cv.width, cv.height);
+      var d = ctx.getImageData(0, 0, cv.width, cv.height).data;
+      var best = null, bestSat = 40; // nur deutlich gesättigte Pixel (kein Schwarz/Weiß/Grau)
+      for(var i = 0; i < d.length; i += 16){
+        var r=d[i], g=d[i+1], b=d[i+2], a=d[i+3];
+        if(a < 200) continue;
+        var mx=Math.max(r,g,b), mn=Math.min(r,g,b), sat=mx-mn;
+        if(sat > bestSat && mx > 60 && mx < 250){ bestSat = sat; best = [r,g,b]; }
+      }
+      if(best){
+        var hex = "#" + best.map(function(v){return v.toString(16).padStart(2,"0");}).join("");
+        document.documentElement.style.setProperty("--brand", hex);
+        var m = hex.replace("#",""); // sanfter Hintergrundton dazu
+        var rr=parseInt(m.substr(0,2),16), gg=parseInt(m.substr(2,2),16), bb=parseInt(m.substr(4,2),16);
+        document.documentElement.style.setProperty("--brand-soft",
+          "rgba(" + rr + "," + gg + "," + bb + ",0.10)");
+      }
+    }catch(e){/* CORS o.ä. -> Fallback-Farbe bleibt aktiv */}
+  };
+  img.src = "https://cdn.prod.website-files.com/67615cd2f575517262de4cdf/67615cd2f575517262de4d53_logo-dark.svg";
+})();
+</script>
 </body>
 </html>
